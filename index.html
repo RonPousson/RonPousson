@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VybeMedia Affiliate Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --surface: rgba(255, 255, 255, 0.78);
+      --primary: #1565ff;
+      --primary-2: #4bc0ff;
+      --text: #0f1a35;
+      --muted: #4b5f86;
+      --ring: rgba(21, 101, 255, 0.15);
+      --shadow: 0 20px 45px rgba(22, 62, 148, 0.13);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, #e5f0ff 0%, transparent 35%),
+        radial-gradient(circle at 92% 5%, #d9ecff 0%, transparent 32%),
+        linear-gradient(180deg, #f9fcff 0%, var(--bg) 100%);
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(1140px, 92vw);
+      margin: 0 auto;
+    }
+
+    section { padding: 4.8rem 0; }
+
+    .glass-card {
+      background: var(--surface);
+      border: 1px solid rgba(118, 169, 255, 0.25);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding-top: 2rem;
+      padding-bottom: 5.5rem;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .logo-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(21,101,255,0.08), rgba(75,192,255,0.12));
+      border: 1px solid rgba(21,101,255,0.2);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #22448f;
+      font-size: .95rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4.3vw, 3.4rem);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      max-width: 62ch;
+    }
+
+    .btn-row {
+      margin-top: 1.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .85rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 24px rgba(21, 101, 255, .3);
+    }
+
+    .btn-secondary {
+      color: #1f53ca;
+      border-color: rgba(21, 101, 255, 0.25);
+      background: rgba(255,255,255,0.8);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-logo-panel {
+      display: grid;
+      place-items: center;
+      padding: 1.4rem;
+      min-height: 330px;
+      background:
+        linear-gradient(150deg, rgba(22,89,255,0.14), rgba(75,192,255,0.18));
+      border-radius: calc(var(--radius) - 4px);
+      border: 1px solid rgba(76, 147, 255, .3);
+    }
+
+    .hero-logo-panel img {
+      width: min(100%, 400px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 25px rgba(19, 65, 154, 0.35));
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      margin: 0 0 .7rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro { color: var(--muted); max-width: 70ch; }
+
+    .grid { display: grid; gap: 1rem; }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .feature-card,
+    .product-card,
+    .commission-card,
+    .target-card {
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(236,246,255,.85));
+      border: 1px solid rgba(114, 159, 255, 0.22);
+      box-shadow: 0 10px 25px rgba(30, 87, 174, 0.08);
+    }
+
+    .feature-card .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      margin-bottom: .65rem;
+      background: linear-gradient(135deg, #1565ff, #4bc0ff);
+      color: #fff;
+    }
+
+    .card-title { margin: 0; font-size: 1rem; font-weight: 600; }
+
+    .commission-card strong {
+      display: block;
+      color: #1d4ac0;
+      margin-bottom: .3rem;
+    }
+
+    .target-list {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .target-pill {
+      padding: .5rem .85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(21,101,255,0.2);
+      background: rgba(255,255,255,.75);
+      color: #22488f;
+      font-weight: 500;
+      font-size: .95rem;
+    }
+
+    .form-shell {
+      padding: 1.5rem;
+    }
+
+    form {
+      display: grid;
+      gap: .95rem;
+    }
+
+    .fields-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .95rem; }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #1f3970;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(90, 136, 231, 0.35);
+      padding: .75rem .85rem;
+      font: inherit;
+      color: var(--text);
+      background: #ffffffd6;
+      outline: none;
+      transition: .2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #2d71ff;
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+
+    .check-group {
+      padding: .85rem .95rem;
+      border-radius: 14px;
+      border: 1px solid rgba(90, 136, 231, 0.25);
+      background: rgba(255,255,255,.65);
+    }
+
+    .check-group p {
+      margin: 0 0 .5rem;
+      font-weight: 600;
+      color: #1f3970;
+      font-size: .95rem;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: .4rem .8rem;
+    }
+
+    .checklist label {
+      flex-direction: row;
+      align-items: center;
+      gap: .5rem;
+      font-size: .92rem;
+      font-weight: 500;
+      color: #395287;
+    }
+
+    .checklist input[type="checkbox"] { width: auto; }
+
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid rgba(122, 165, 255, .25);
+      background: #f8fbff;
+      padding: 2rem 0;
+    }
+
+    .footer-wrap {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-wrap img { width: 165px; height: auto; }
+
+    .contact {
+      font-size: .95rem;
+      color: #344b78;
+      text-align: right;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap, .grid-4 { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .hero-wrap, .grid-4, .grid-3, .fields-2 { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 0; }
+      .contact { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container glass-card hero-wrap">
+      <div>
+        <span class="logo-chip">VybeMedia Partner Network</span>
+        <h1>Become a VybeMedia Affiliate Partner</h1>
+        <p>Earn recurring income by helping businesses access AI-powered advertising, AI search visibility, automation, and digital growth tools.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#application">Apply Now</a>
+          <a class="btn btn-secondary" href="#how-it-works">Learn How It Works</a>
+        </div>
+      </div>
+      <div class="hero-logo-panel">
+        <img src="assets/vybemedia-logo.svg" alt="VybeMedia logo" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="how-it-works">
+      <div class="container">
+        <h2>The Opportunity Is Happening Now</h2>
+        <p class="section-intro">AI marketing is creating a business shift similar to the early internet boom. Companies that embrace modern search visibility, intelligent automation, and AI-driven ad systems are pulling ahead. VybeMedia gives affiliates the ability to connect growth-focused businesses with advanced services built to increase visibility, leads, and revenue.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Affiliate Benefits</h2>
+        <p class="section-intro">Built for high performers who want meaningful upside with operational support.</p>
+        <div class="grid grid-4" style="margin-top: 1rem;">
+          <article class="feature-card"><div class="icon">%</div><h3 class="card-title">20%–40% commission opportunities</h3></article>
+          <article class="feature-card"><div class="icon">↻</div><h3 class="card-title">Recurring income potential</h3></article>
+          <article class="feature-card"><div class="icon">∞</div><h3 class="card-title">Uncapped earnings</h3></article>
+          <article class="feature-card"><div class="icon">⏱</div><h3 class="card-title">Flexible schedule</h3></article>
+          <article class="feature-card"><div class="icon">🤝</div><h3 class="card-title">Sales support provided</h3></article>
+          <article class="feature-card"><div class="icon">✓</div><h3 class="card-title">No fulfillment headaches</h3></article>
+          <article class="feature-card"><div class="icon">🚀</div><h3 class="card-title">Early-stage growth opportunity</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Products You Can Offer</h2>
+        <div class="grid grid-4" style="margin-top: 1rem;">
+          <div class="product-card">AI Search / AEO / GEO</div>
+          <div class="product-card">SEO</div>
+          <div class="product-card">PPC</div>
+          <div class="product-card">Social Media Marketing</div>
+          <div class="product-card">VybeMail Email Marketing</div>
+          <div class="product-card">VybeBoost AI Campaigns</div>
+          <div class="product-card">Custom Apps</div>
+          <div class="product-card">CRM &amp; Business Automation</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Sample Commission Opportunities</h2>
+        <div class="grid grid-3" style="margin-top: 1rem;">
+          <div class="commission-card"><strong>VybeMail</strong>20% first month + residuals</div>
+          <div class="commission-card"><strong>VybeBoost</strong>15% campaign spend</div>
+          <div class="commission-card"><strong>Websites / AEO Setup</strong>20%</div>
+          <div class="commission-card"><strong>CRM / AI Integrations</strong>15%–20%</div>
+          <div class="commission-card"><strong>Newsletter Ads</strong>25%</div>
+          <div class="commission-card"><strong>Directory Ads</strong>25%</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Who This Is For</h2>
+        <p class="section-intro">Perfect for professionals already connected to business decision-makers and ready to monetize high-demand AI and digital services.</p>
+        <div class="target-list">
+          <span class="target-pill">Sales professionals</span>
+          <span class="target-pill">Marketers</span>
+          <span class="target-pill">Agency owners</span>
+          <span class="target-pill">Former media reps</span>
+          <span class="target-pill">Consultants</span>
+          <span class="target-pill">Entrepreneurs</span>
+          <span class="target-pill">Connected business professionals</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="application">
+      <div class="container glass-card form-shell">
+        <h2>Affiliate Application</h2>
+        <form>
+          <div class="fields-2">
+            <label>Full Name<input type="text" name="name" required /></label>
+            <label>Email<input type="email" name="email" required /></label>
+          </div>
+          <div class="fields-2">
+            <label>Phone<input type="tel" name="phone" required /></label>
+            <label>City/State<input type="text" name="location" required /></label>
+          </div>
+          <div class="fields-2">
+            <label>LinkedIn<input type="url" name="linkedin" placeholder="https://" /></label>
+            <label>Sales experience
+              <select name="experience" required>
+                <option value="">Select one</option>
+                <option>0-1 years</option>
+                <option>2-5 years</option>
+                <option>6-10 years</option>
+                <option>10+ years</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="check-group">
+            <p>Lead generation plan</p>
+            <div class="checklist">
+              <label><input type="checkbox" name="lead_plan" value="network" /> Existing network outreach</label>
+              <label><input type="checkbox" name="lead_plan" value="social" /> Social media content</label>
+              <label><input type="checkbox" name="lead_plan" value="email" /> Email prospecting</label>
+              <label><input type="checkbox" name="lead_plan" value="events" /> Local networking/events</label>
+            </div>
+          </div>
+
+          <div class="check-group">
+            <p>Products of interest</p>
+            <div class="checklist">
+              <label><input type="checkbox" name="product_interest" value="aeo" /> AI Search / AEO / GEO</label>
+              <label><input type="checkbox" name="product_interest" value="seo" /> SEO</label>
+              <label><input type="checkbox" name="product_interest" value="ppc" /> PPC</label>
+              <label><input type="checkbox" name="product_interest" value="social" /> Social Media Marketing</label>
+              <label><input type="checkbox" name="product_interest" value="vybemail" /> VybeMail</label>
+              <label><input type="checkbox" name="product_interest" value="vybeboost" /> VybeBoost</label>
+              <label><input type="checkbox" name="product_interest" value="apps" /> Custom Apps</label>
+              <label><input type="checkbox" name="product_interest" value="crm" /> CRM & Business Automation</label>
+            </div>
+          </div>
+
+          <label>Commitment level
+            <select name="commitment" required>
+              <option value="">Select one</option>
+              <option>Part-time (5-10 hrs/week)</option>
+              <option>Growth mode (10-20 hrs/week)</option>
+              <option>Full-time focus (20+ hrs/week)</option>
+            </select>
+          </label>
+
+          <label>Why do you want to join?
+            <textarea name="why_join" rows="5" required></textarea>
+          </label>
+
+          <div>
+            <button class="btn btn-primary" type="submit">Apply to Become an Affiliate</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <img src="assets/vybemedia-logo.svg" alt="VybeMedia logo" />
+      <div class="contact">
+        <div><strong>Website:</strong> www.vybemediainc.com</div>
+        <div><strong>Email:</strong> info@vybemediainc.com</div>
+        <div><strong>Secondary:</strong> info@vybeos.net</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
